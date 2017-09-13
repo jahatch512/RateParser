@@ -30,20 +30,20 @@ export default class App extends React.Component {
     }
 
     render = () => {
-      var data = JSON.parse(this.state.ratePeriods);
-      var squaresList = data.map(function(name, index){
-                  return <CalendarSquare key={ index } rateInfo={ name }/>;
-              })
+        var data = JSON.parse(this.state.ratePeriods);
+        var squaresList = data.map(function(name, index){
+        return <CalendarSquare key={ index } rateInfo={ name }/>;
+        })
 
-    return (
-      <div className="app">
-        <div className="title-header">Rate Schedule</div>
-        <div className="calendar-outer">
-            <div className="calendar-box">
-                { squaresList }
+        return (
+          <div className="app">
+            <div className="title-header">Rate Schedule</div>
+            <div className="calendar-outer">
+                <div className="calendar-box">
+                    { squaresList }
+                </div>
             </div>
-        </div>
-      </div>
-    );
+          </div>
+        );
     }
 }
