@@ -5,7 +5,7 @@ module.exports = {
   context: __dirname,
   entry: "./src/scripts/root",
   output: {
-    path: path.join(__dirname, '/src/scripts'),
+    path: path.join(__dirname, 'src', 'scripts'),
     filename: "bundle.js",
     devtoolModuleFilenameTemplate: '[resourcePath]',
     devtoolFallbackModuleFilenameTemplate: '[resourcePath]?[hash]'
