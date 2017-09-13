@@ -3,9 +3,9 @@ var path = require("path");
 
 module.exports = {
   context: __dirname,
-  entry: "./src/javascripts/root.jsx",
+  entry: "./src/scripts/root",
   output: {
-    path: path.join(__dirname, '/src/javascripts'),
+    path: path.join(__dirname, '/src/scripts'),
     filename: "bundle.js",
     devtoolModuleFilenameTemplate: '[resourcePath]',
     devtoolFallbackModuleFilenameTemplate: '[resourcePath]?[hash]'

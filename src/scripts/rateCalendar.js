@@ -12,7 +12,7 @@
 //    “color”: “#0000FF”
 //  }]
 
-function generateHex (n){
+export function generateHex (n){
     var hexColor = "";
     var rate;
     if (n.slice(-1) % 2 == 0){
@@ -28,13 +28,13 @@ function generateHex (n){
     return "#0" + hexColor.slice(-5);
 }
 
-function rateParser (data) {
-    var data = JSON.parse(data);
-
-    var rateColorCalendar = [],
+export function rateParser (data) {
+    var data = JSON.parse(data),
+        rateColorCalendar = [],
         newRange = {},
         previousDate = data[0].date,
-        currentRate = data[0].rate;
+        currentRate = data[0].rate,
+        i;
 
         newRange["period-start"] = previousDate;
         newRange["rate"] = currentRate;
@@ -52,38 +52,12 @@ function rateParser (data) {
             newRange["rate"] = rate;
             newRange["color"] = generateHex(rate);
             currentRate = rate;
-            newRate = true;
         }
         if (i === data.length-1) {
           newRange["period-end"] = date;
           rateColorCalendar.push(newRange);
         }
         previousDate = date;
-        newRate = false;
     }
     return JSON.stringify(rateColorCalendar);
 }
-
-var testArray = [
-    {"date": "2018-01-01", "rate": "199.99"},
-    {"date": "2018-01-02", "rate": "199.99"},
-    {"date": "2018-01-03", "rate": "199.99"},
-    {"date": "2018-01-04", "rate": "199.99"},
-    {"date": "2018-01-05", "rate": "199.99"},
-    {"date": "2018-01-06", "rate": "115.49"},
-    {"date": "2018-01-07", "rate": "115.49"},
-    {"date": "2018-01-08", "rate": "115.49"},
-    {"date": "2018-01-09", "rate": "115.49"},
-    {"date": "2018-01-10", "rate": "115.49"},
-    {"date": "2018-01-11", "rate": "200.00"},
-    {"date": "2018-01-15", "rate": "115.49"},
-    {"date": "2018-01-16", "rate": "115.49"},
-    {"date": "2018-01-17", "rate": "115.49"},
-    {"date": "2018-01-20", "rate": "115.49"},
-    {"date": "2018-01-21", "rate": "115.49"},
-    {"date": "2018-01-22", "rate": "200.00"}
-];
-
-jsonArray = JSON.stringify(testArray);
-
-rateParser(jsonArray);

@@ -1,0 +1,50 @@
+.title-header {
+    width: auto;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 50px;
+}
+
+.calendar-box {
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid blue;
+    width: 450px;
+    height: 400px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    justify-content: flex-start;
+    overflow: scroll;
+    margin: 10px;
+
+}
+
+.calendar-outer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    border: 1px solid green;
+}
+
+.calendar-square {
+    width: 120px;
+    border: 1px solid red;
+    height: 100px;
+    margin: 10px;
+}
+
+.date {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    margin-right: 10px;
+    margin-top: 5px;
+}
+
+#rate {
+    display: none;
+}
