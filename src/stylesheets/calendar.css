@@ -94,6 +94,7 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
+    flex-wrap: wrap;
 }
 
 .submit-rate {
@@ -103,8 +104,10 @@
     width: 280px;
     background-color: rgba(	236, 240, 241, .5);
     border-radius: 4px;
+}
 
-
+.submit-rate:hover {
+    cursor: pointer;
 }
 
 .form-textbox {
