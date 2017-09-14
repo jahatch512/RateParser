@@ -22638,7 +22638,8 @@ function generateHex(n) {
         digit = Math.pow(parseInt(digit), 3);
         hexColor += digit.toString(16);
     });
-    return "#0" + hexColor.slice(-5);
+    var prefix = hexColor.length <= 5 ? "#0" : "#";
+    return prefix + hexColor.slice(-6);
 }
 
 function rateParser(data) {
