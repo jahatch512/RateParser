@@ -22432,6 +22432,8 @@ var App = function (_React$Component) {
 
         var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this));
 
+        _this.addRate = function (start, end, rate) {};
+
         _this.render = function () {
             var data = JSON.parse(_this.state.ratePeriods);
             var squaresList = data.map(function (name, index) {
@@ -22445,6 +22447,36 @@ var App = function (_React$Component) {
                     'div',
                     { className: 'title-header' },
                     'Rate Schedule'
+                ),
+                _react2.default.createElement(
+                    'form',
+                    { className: 'rate-input-form', onSubmit: _this.addRate },
+                    _react2.default.createElement('input', { type: 'text',
+                        className: 'form-textbox',
+                        value: _this.state.start,
+                        onChange: _this.onChange,
+                        placeholder: 'Start Date',
+                        id: 'start' }),
+                    _react2.default.createElement('br', null),
+                    _react2.default.createElement('br', null),
+                    _react2.default.createElement('input', { type: 'text',
+                        className: 'form-textbox',
+                        value: _this.state.end,
+                        onChange: _this.onChange,
+                        placeholder: 'End Date',
+                        id: 'end' }),
+                    _react2.default.createElement('br', null),
+                    _react2.default.createElement('br', null),
+                    _react2.default.createElement('input', { type: 'text',
+                        className: 'form-textbox',
+                        value: _this.state.rate,
+                        onChange: _this.onChange,
+                        placeholder: 'Rate',
+                        id: 'rate' }),
+                    _react2.default.createElement('br', null),
+                    _react2.default.createElement('input', { className: 'submit-rate',
+                        type: 'submit',
+                        value: 'Submit New Rate Period!' })
                 ),
                 _react2.default.createElement(
                     'div',

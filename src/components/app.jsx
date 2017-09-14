@@ -29,15 +29,52 @@ export default class App extends React.Component {
         };
     }
 
+    addRate = (start, end, rate) => {
+
+    }
+
     render = () => {
         var data = JSON.parse(this.state.ratePeriods);
         var squaresList = data.map(function(name, index){
-        return <CalendarSquare key={ index } rateInfo={ name }/>;
+            return <CalendarSquare key={ index } rateInfo={ name }/>;
         })
 
         return (
           <div className="app">
             <div className="title-header">Rate Schedule</div>
+                <form className='rate-input-form' onSubmit={this.addRate}>
+
+                  <input type="text"
+                    className="form-textbox"
+                    value={this.state.start}
+                    onChange={this.onChange}
+                    placeholder="Start Date"
+                    id="start"/>
+                  <br/>
+
+                  <br/>
+                  <input type="text"
+                    className="form-textbox"
+                    value={this.state.end}
+                    onChange={this.onChange}
+                    placeholder="End Date"
+                    id="end"/>
+                  <br/>
+
+                  <br/>
+                  <input type="text"
+                    className="form-textbox"
+                    value={this.state.rate}
+                    onChange={this.onChange}
+                    placeholder="Rate"
+                    id="rate"/>
+                  <br/>
+
+                  <input className="submit-rate"
+                         type="submit"
+                         value="Submit New Rate Period!"/>
+
+                </form>
             <div className="calendar-outer">
                 <div className="calendar-box">
                     { squaresList }
