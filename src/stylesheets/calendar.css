@@ -118,10 +118,13 @@
     background-color: black;
     opacity: 0;
     color: white;
+    line-height: 5;
+    text-align: center;
+    font-size: 25px;
 }
 
 .hexValue:hover {
-    opacity: 1;
+    opacity: 0.8;
     z-index: 10;
 }
 
