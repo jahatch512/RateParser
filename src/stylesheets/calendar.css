@@ -69,13 +69,6 @@
     vertical-align: middle;
 }
 
-/*#rateColor:hover {
-    display: inline-block;
-    background-color: rgba(128, 121, 121, 1);
-    opacity: 1;
-    font-size: 25px;
-}*/
-
 .date-label {
     margin: 3px 0px 3px 15px;
     font-size: 16px;
@@ -113,6 +106,23 @@
     margin: 8px;
     padding: 3px;
     line-height: 24px;
+}
+
+.hexValue {
+    min-width: 180px;
+    height: 140px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: inline-block;
+    background-color: black;
+    opacity: 0;
+    color: white;
+}
+
+.hexValue:hover {
+    opacity: 1;
+    z-index: 10;
 }
 
 @media (min-width: 720px) {

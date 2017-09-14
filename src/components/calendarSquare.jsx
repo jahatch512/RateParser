@@ -28,6 +28,7 @@ export default class CalendarSquare extends React.Component {
               Rate:  {this.state.rate}
           </div>
           <div id="rateColor" style={{background: this.state.color}}></div>
+          <div className="hexValue">{this.state.color}</div>
       </div>
     );
   }

@@ -36,14 +36,15 @@ export default class App extends React.Component {
         newPeriod["color"] = generateHex(newPeriod.rate);
         var newSquares = JSON.parse(this.state.ratePeriods);
         newSquares.push(newPeriod);
-        this.setState({ratePeriods: JSON.stringify(newSquares), userRate: {}})
+        this.setState({ratePeriods: JSON.stringify(newSquares),
+                       userRate: {"start": "", "end": "", "rate": ""}})
     }
 
     onChange = (event) => {
         event.preventDefault();
         var updateRate = this.state.userRate;
         updateRate[event.target.id] = event.target.value;
-        this.setState({userRate: updateRate})
+        this.setState({userRate: updateRate});
     }
 
     render = () => {
@@ -59,7 +60,7 @@ export default class App extends React.Component {
                   <div className='rate-input-form'>
                       <input type="text"
                           className="form-textbox"
-                          value={this.state.start}
+                          value={this.state.userRate["start"]}
                           onChange={this.onChange}
                           placeholder=" Start Date: 10-10-2017"
                           id="start"/>
@@ -68,7 +69,7 @@ export default class App extends React.Component {
                       <br/>
                       <input type="text"
                           className="form-textbox"
-                          value={this.state.end}
+                          value={this.state.userRate["end"]}
                           onChange={this.onChange}
                           placeholder=" End Date: 12-12-2017"
                           id="end"/>
@@ -77,7 +78,7 @@ export default class App extends React.Component {
                       <br/>
                       <input type="text"
                           className="form-textbox"
-                          value={this.state.rate}
+                          value={this.state.userRate["rate"]}
                           onChange={this.onChange}
                           placeholder=" Rate: 123.45"
                           id="rate"/>

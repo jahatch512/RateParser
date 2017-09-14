@@ -22438,7 +22438,8 @@ var App = function (_React$Component) {
             newPeriod["color"] = (0, _rateCalendar.generateHex)(newPeriod.rate);
             var newSquares = JSON.parse(_this.state.ratePeriods);
             newSquares.push(newPeriod);
-            _this.setState({ ratePeriods: JSON.stringify(newSquares), userRate: {} });
+            _this.setState({ ratePeriods: JSON.stringify(newSquares),
+                userRate: { "start": "", "end": "", "rate": "" } });
         };
 
         _this.onChange = function (event) {
@@ -22470,7 +22471,7 @@ var App = function (_React$Component) {
                         { className: 'rate-input-form' },
                         _react2.default.createElement('input', { type: 'text',
                             className: 'form-textbox',
-                            value: _this.state.start,
+                            value: _this.state.userRate["start"],
                             onChange: _this.onChange,
                             placeholder: ' Start Date: 10-10-2017',
                             id: 'start' }),
@@ -22478,7 +22479,7 @@ var App = function (_React$Component) {
                         _react2.default.createElement('br', null),
                         _react2.default.createElement('input', { type: 'text',
                             className: 'form-textbox',
-                            value: _this.state.end,
+                            value: _this.state.userRate["end"],
                             onChange: _this.onChange,
                             placeholder: ' End Date: 12-12-2017',
                             id: 'end' }),
@@ -22486,7 +22487,7 @@ var App = function (_React$Component) {
                         _react2.default.createElement('br', null),
                         _react2.default.createElement('input', { type: 'text',
                             className: 'form-textbox',
-                            value: _this.state.rate,
+                            value: _this.state.userRate["rate"],
                             onChange: _this.onChange,
                             placeholder: ' Rate: 123.45',
                             id: 'rate' })
@@ -22576,7 +22577,12 @@ var CalendarSquare = function (_React$Component) {
                     "Rate:  ",
                     _this.state.rate
                 ),
-                _react2.default.createElement("div", { id: "rateColor", style: { background: _this.state.color } })
+                _react2.default.createElement("div", { id: "rateColor", style: { background: _this.state.color } }),
+                _react2.default.createElement(
+                    "div",
+                    { className: "hexValue" },
+                    _this.state.color
+                )
             );
         };
 
