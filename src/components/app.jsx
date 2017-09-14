@@ -25,12 +25,25 @@ export default class App extends React.Component {
             {"date": "2018-01-22", "rate": "200.00"}
         ]);
         this.state = {
-            ratePeriods: rateParser(jsonData)
+            ratePeriods: rateParser(jsonData),
+            userRate: {}
         };
     }
 
-    addRate = (start, end, rate) => {
+    addRate = (event) => {
+        event.preventDefault();
+        var newPeriod = this.state.userRate;
+        newPeriod["color"] = generateHex(newPeriod.rate);
+        var newSquares = JSON.parse(this.state.ratePeriods);
+        newSquares.push(newPeriod);
+        this.setState({ratePeriods: JSON.stringify(newSquares), userRate: {}})
+    }
 
+    onChange = (event) => {
+        event.preventDefault();
+        var updateRate = this.state.userRate;
+        updateRate[event.target.id] = event.target.value;
+        this.setState({userRate: updateRate})
     }
 
     render = () => {
@@ -67,7 +80,7 @@ export default class App extends React.Component {
                           value={this.state.rate}
                           onChange={this.onChange}
                           placeholder=" Rate: 123.45"
-                          id="rate-input"/>
+                          id="rate"/>
                   </div>
 
 

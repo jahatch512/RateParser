@@ -22432,7 +22432,21 @@ var App = function (_React$Component) {
 
         var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this));
 
-        _this.addRate = function (start, end, rate) {};
+        _this.addRate = function (event) {
+            event.preventDefault();
+            var newPeriod = _this.state.userRate;
+            newPeriod["color"] = (0, _rateCalendar.generateHex)(newPeriod.rate);
+            var newSquares = JSON.parse(_this.state.ratePeriods);
+            newSquares.push(newPeriod);
+            _this.setState({ ratePeriods: JSON.stringify(newSquares), userRate: {} });
+        };
+
+        _this.onChange = function (event) {
+            event.preventDefault();
+            var updateRate = _this.state.userRate;
+            updateRate[event.target.id] = event.target.value;
+            _this.setState({ userRate: updateRate });
+        };
 
         _this.render = function () {
             var data = JSON.parse(_this.state.ratePeriods);
@@ -22475,7 +22489,7 @@ var App = function (_React$Component) {
                             value: _this.state.rate,
                             onChange: _this.onChange,
                             placeholder: ' Rate: 123.45',
-                            id: 'rate-input' })
+                            id: 'rate' })
                     ),
                     _react2.default.createElement('input', { className: 'submit-rate',
                         type: 'submit',
@@ -22495,7 +22509,8 @@ var App = function (_React$Component) {
 
         var jsonData = JSON.stringify([{ "date": "2018-01-01", "rate": "199.99" }, { "date": "2018-01-02", "rate": "199.99" }, { "date": "2018-01-03", "rate": "199.99" }, { "date": "2018-01-04", "rate": "199.99" }, { "date": "2018-01-05", "rate": "199.99" }, { "date": "2018-01-06", "rate": "115.49" }, { "date": "2018-01-07", "rate": "115.49" }, { "date": "2018-01-08", "rate": "115.49" }, { "date": "2018-01-09", "rate": "115.49" }, { "date": "2018-01-10", "rate": "115.49" }, { "date": "2018-01-11", "rate": "200.00" }, { "date": "2018-01-15", "rate": "115.49" }, { "date": "2018-01-16", "rate": "115.49" }, { "date": "2018-01-17", "rate": "115.49" }, { "date": "2018-01-20", "rate": "115.49" }, { "date": "2018-01-21", "rate": "115.49" }, { "date": "2018-01-22", "rate": "200.00" }]);
         _this.state = {
-            ratePeriods: (0, _rateCalendar.rateParser)(jsonData)
+            ratePeriods: (0, _rateCalendar.rateParser)(jsonData),
+            userRate: {}
         };
         return _this;
     }
@@ -22537,36 +22552,31 @@ var CalendarSquare = function (_React$Component) {
         var _this = _possibleConstructorReturn(this, (CalendarSquare.__proto__ || Object.getPrototypeOf(CalendarSquare)).call(this, props));
 
         _this.render = function () {
+            // var style = {
+            //     border-color:
+            // }
             return _react2.default.createElement(
                 "div",
                 { className: "calendar-square" },
                 _react2.default.createElement(
                     "div",
                     { className: "date-label" },
-                    "Start Date:",
-                    _react2.default.createElement(
-                        "div",
-                        { className: "date-number" },
-                        _this.state.start
-                    )
+                    "Start:  ",
+                    _this.state.start
                 ),
                 _react2.default.createElement(
                     "div",
                     { className: "date-label" },
-                    "End Date:",
-                    _react2.default.createElement(
-                        "div",
-                        { className: "date-number" },
-                        _this.state.end
-                    )
+                    "End:  ",
+                    _this.state.end
                 ),
                 _react2.default.createElement(
                     "div",
-                    { id: "rate", style: { color: _this.state.color } },
-                    _this.state.rate,
-                    _react2.default.createElement("br", null),
-                    _this.state.color
-                )
+                    { className: "date-label" },
+                    "Rate:  ",
+                    _this.state.rate
+                ),
+                _react2.default.createElement("div", { id: "rateColor", style: { background: _this.state.color } })
             );
         };
 

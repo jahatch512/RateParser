@@ -13,17 +13,21 @@ export default class CalendarSquare extends React.Component {
     }
 
   render = () => {
+    // var style = {
+    //     border-color:
+    // }
     return (
       <div className="calendar-square">
           <div className="date-label">
-              Start Date:
-              <div className="date-number">{this.state.start}</div>
+              Start:  {this.state.start}
           </div>
           <div className="date-label">
-              End Date:
-              <div className="date-number">{this.state.end}</div>
+              End:  {this.state.end}
           </div>
-          <div id="rate" style={{color: this.state.color}}>{this.state.rate}<br />{this.state.color}</div>
+          <div className="date-label">
+              Rate:  {this.state.rate}
+          </div>
+          <div id="rateColor" style={{background: this.state.color}}></div>
       </div>
     );
   }
