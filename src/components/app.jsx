@@ -42,37 +42,38 @@ export default class App extends React.Component {
         return (
           <div className="app">
             <div className="title-header">Rate Schedule</div>
-                <form className='rate-input-form' onSubmit={this.addRate}>
+                <form onSubmit={this.addRate}>
+                  <div className='rate-input-form'>
+                      <input type="text"
+                          className="form-textbox"
+                          value={this.state.start}
+                          onChange={this.onChange}
+                          placeholder=" Start Date: 10-10-2017"
+                          id="start"/>
+                      <br/>
 
-                  <input type="text"
-                    className="form-textbox"
-                    value={this.state.start}
-                    onChange={this.onChange}
-                    placeholder="Start Date"
-                    id="start"/>
-                  <br/>
+                      <br/>
+                      <input type="text"
+                          className="form-textbox"
+                          value={this.state.end}
+                          onChange={this.onChange}
+                          placeholder=" End Date: 12-12-2017"
+                          id="end"/>
+                      <br/>
 
-                  <br/>
-                  <input type="text"
-                    className="form-textbox"
-                    value={this.state.end}
-                    onChange={this.onChange}
-                    placeholder="End Date"
-                    id="end"/>
-                  <br/>
+                      <br/>
+                      <input type="text"
+                          className="form-textbox"
+                          value={this.state.rate}
+                          onChange={this.onChange}
+                          placeholder=" Rate: 123.45"
+                          id="rate-input"/>
+                  </div>
 
-                  <br/>
-                  <input type="text"
-                    className="form-textbox"
-                    value={this.state.rate}
-                    onChange={this.onChange}
-                    placeholder="Rate"
-                    id="rate"/>
-                  <br/>
 
                   <input className="submit-rate"
                          type="submit"
-                         value="Submit New Rate Period!"/>
+                         value="Submit Rate Period"/>
 
                 </form>
             <div className="calendar-outer">
