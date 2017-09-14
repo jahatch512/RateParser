@@ -26,6 +26,9 @@ export function generateHex (n){
         hexColor += digit.toString(16);
     })
     var prefix = hexColor.length <= 5 ? "#0" : "#";
+    if (hexColor.slice(0,1) % 2 == 0) {
+        hexColor = hexColor.split("").reverse().join("");
+    }
     return prefix + hexColor.slice(-6);
 }
 

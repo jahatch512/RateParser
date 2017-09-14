@@ -1,9 +1,46 @@
 # Rate Calendar
 
-[Rate Color Viewer][pages]
+[Rate Calendar][pages]
 
 [pages]: https://jahatch512.github.io/RateParser/
 
+## Updated Notes
+
+### User Input
+
+In order to allow the user to input data, I used a combination of old-school HTML forms and built in React tools. I added listeners on the input fields that dynamically update the "state" of the component as the user inputs data. When the user hits "submit", the component generates a new hex color and adds a new "rate period" to the state.ratePeriod array.
+
+### Updates
+
+-- After playing around with the user input fields myself, I started to notice that the color variation between rates was actually not very significant. I decided to add a little extra code in the generateHex function to provide more variation. First, I did not hard code the first '0' for the hex code, but rather nested that within a conditional to only add it when necessary. Second, I added in another "reverse" of the hex code that only occurs ~50% of the time:
+
+``` javascript
+export function generateHex (n){
+    var hexColor = "";
+    var rate;
+    if (n.slice(-1) % 2 == 0){
+      rate = n.split(".").reverse().join("");
+    }
+    else {
+      rate = n.split(".").join("");
+    }
+    rate.split("").forEach(function(digit){
+        digit = parseInt(digit)**3;
+        hexColor += digit.toString(16);
+    })
+    var prefix = hexColor.length <= 5 ? "#0" : "#";
+    if (hexColor.slice(0,1) % 2 == 0) {
+        hexColor = hexColor.split("").reverse().join("");
+    }
+    return prefix + hexColor.slice(-6);
+}
+```
+
+-- I also decided to add some media queries to clean up the responsive design. Play around with some different window sizes and you'll notice a little better UI/UX.
+
+-- I realized that the color associated with the rate period should be readily visible when the user lands on the page, so I updated the layout of the tiles. They now include an easy to see representation of the color, and hovering over the tile reveals the randomized hex code that was generated.
+
+-- Although I think it is outside of the scope of this challenge, one thing I would have added in the future would be constraints/security checks to make sure the input values are in proper format before creating a new rate period. 
 
 ## Design & Implementation
 

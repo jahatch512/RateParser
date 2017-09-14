@@ -26,7 +26,7 @@ export default class App extends React.Component {
         ]);
         this.state = {
             ratePeriods: rateParser(jsonData),
-            userRate: {}
+            userRate: {"start": "", "end": "", "rate": ""}
         };
     }
 

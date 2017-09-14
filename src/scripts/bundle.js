@@ -22511,7 +22511,7 @@ var App = function (_React$Component) {
         var jsonData = JSON.stringify([{ "date": "2018-01-01", "rate": "199.99" }, { "date": "2018-01-02", "rate": "199.99" }, { "date": "2018-01-03", "rate": "199.99" }, { "date": "2018-01-04", "rate": "199.99" }, { "date": "2018-01-05", "rate": "199.99" }, { "date": "2018-01-06", "rate": "115.49" }, { "date": "2018-01-07", "rate": "115.49" }, { "date": "2018-01-08", "rate": "115.49" }, { "date": "2018-01-09", "rate": "115.49" }, { "date": "2018-01-10", "rate": "115.49" }, { "date": "2018-01-11", "rate": "200.00" }, { "date": "2018-01-15", "rate": "115.49" }, { "date": "2018-01-16", "rate": "115.49" }, { "date": "2018-01-17", "rate": "115.49" }, { "date": "2018-01-20", "rate": "115.49" }, { "date": "2018-01-21", "rate": "115.49" }, { "date": "2018-01-22", "rate": "200.00" }]);
         _this.state = {
             ratePeriods: (0, _rateCalendar.rateParser)(jsonData),
-            userRate: {}
+            userRate: { "start": "", "end": "", "rate": "" }
         };
         return _this;
     }
@@ -22639,6 +22639,9 @@ function generateHex(n) {
         hexColor += digit.toString(16);
     });
     var prefix = hexColor.length <= 5 ? "#0" : "#";
+    if (hexColor.slice(0, 1) % 2 == 0) {
+        hexColor = hexColor.split("").reverse().join("");
+    }
     return prefix + hexColor.slice(-6);
 }
 
