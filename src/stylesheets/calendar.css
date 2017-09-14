@@ -99,6 +99,10 @@
     cursor: pointer;
 }
 
+.submit-rate:focus {
+    outline: 0;
+}
+
 .form-textbox {
     margin: 8px;
     padding: 3px;
