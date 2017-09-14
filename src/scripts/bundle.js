@@ -22553,9 +22553,6 @@ var CalendarSquare = function (_React$Component) {
         var _this = _possibleConstructorReturn(this, (CalendarSquare.__proto__ || Object.getPrototypeOf(CalendarSquare)).call(this, props));
 
         _this.render = function () {
-            // var style = {
-            //     border-color:
-            // }
             return _react2.default.createElement(
                 "div",
                 { className: "calendar-square" },

@@ -13,9 +13,6 @@ export default class CalendarSquare extends React.Component {
     }
 
   render = () => {
-    // var style = {
-    //     border-color:
-    // }
     return (
       <div className="calendar-square">
           <div className="date-label">
